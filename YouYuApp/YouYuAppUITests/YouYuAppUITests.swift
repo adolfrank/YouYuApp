@@ -1,8 +1,8 @@
 //
-//  YouYuAppUITests.swift
-//  YouYuAppUITests
+//  _1_dayUITests.swift
+//  11-dayUITests
 //
-//  Created by Hongbo Yu on 16/3/28.
+//  Created by Hongbo Yu on 16/3/24.
 //  Copyright © 2016年 Frank. All rights reserved.
 //
 

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  YouYuApp
+//  11-day
 //
-//  Created by Hongbo Yu on 16/3/28.
+//  Created by Hongbo Yu on 16/3/24.
 //  Copyright © 2016年 Frank. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 
