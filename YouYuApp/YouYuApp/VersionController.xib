@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VersionController" customModule="YouYuApp" customModuleProvider="target">
+            <connections>
+                <outlet property="versionLable" destination="dZD-0O-eAX" id="V8p-2f-dKC"/>
+                <outlet property="versionTable" destination="8ST-vw-IN7" id="odv-fH-oyA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa6-8A-8qp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8ST-vw-IN7">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <view key="tableHeaderView" contentMode="scaleToFill" id="XKs-Ce-7TM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="version－icon" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-MC-kgd">
+                                        <rect key="frame" x="133" y="41" width="109" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="109" id="Hag-1P-baQ"/>
+                                            <constraint firstAttribute="height" constant="110" id="U26-dy-wXt"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本：1.15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZD-0O-eAX">
+                                        <rect key="frame" x="154" y="164" width="67" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dZD-0O-eAX" firstAttribute="top" secondItem="tRS-MC-kgd" secondAttribute="bottom" constant="13" id="0ER-X9-N4n"/>
+                                    <constraint firstItem="dZD-0O-eAX" firstAttribute="centerX" secondItem="XKs-Ce-7TM" secondAttribute="centerX" id="6yL-Kt-oju"/>
+                                    <constraint firstItem="tRS-MC-kgd" firstAttribute="centerX" secondItem="XKs-Ce-7TM" secondAttribute="centerX" id="KOw-9z-h6g"/>
+                                    <constraint firstItem="tRS-MC-kgd" firstAttribute="top" secondItem="XKs-Ce-7TM" secondAttribute="top" constant="41" id="ipc-Uw-99K"/>
+                                </constraints>
+                            </view>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="6hC-RQ-ZGc"/>
+                                <outlet property="delegate" destination="-1" id="JrL-SR-V6L"/>
+                            </connections>
+                        </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright 2011-2016 Adolfrank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c8-3h-tUM">
+                            <rect key="frame" x="99" y="632" width="177" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="8ST-vw-IN7" firstAttribute="top" secondItem="sa6-8A-8qp" secondAttribute="top" id="8q0-rs-XNE"/>
+                        <constraint firstAttribute="bottom" secondItem="8ST-vw-IN7" secondAttribute="bottom" id="ShS-Fn-0Hv"/>
+                        <constraint firstAttribute="trailing" secondItem="8ST-vw-IN7" secondAttribute="trailing" id="c4f-Vz-Wh6"/>
+                        <constraint firstItem="8ST-vw-IN7" firstAttribute="centerY" secondItem="sa6-8A-8qp" secondAttribute="centerY" id="iuv-Ad-hYK"/>
+                        <constraint firstItem="8ST-vw-IN7" firstAttribute="leading" secondItem="sa6-8A-8qp" secondAttribute="leading" id="u1K-CB-D72"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3c8-3h-tUM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4Fk-SK-sU6"/>
+                <constraint firstAttribute="bottom" secondItem="3c8-3h-tUM" secondAttribute="bottom" constant="20" id="81s-M5-aIe"/>
+                <constraint firstItem="8ST-vw-IN7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="85n-ps-lRf"/>
+                <constraint firstAttribute="bottom" secondItem="sa6-8A-8qp" secondAttribute="bottom" id="K3W-3N-ThL"/>
+                <constraint firstAttribute="trailing" secondItem="sa6-8A-8qp" secondAttribute="trailing" id="a5X-ne-HSV"/>
+                <constraint firstItem="sa6-8A-8qp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dnc-xf-66V"/>
+                <constraint firstItem="sa6-8A-8qp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eKO-Hc-m5U"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="437.5" y="369.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="version－icon" width="77" height="115"/>
+    </resources>
+</document>

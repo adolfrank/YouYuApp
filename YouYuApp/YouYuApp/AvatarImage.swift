@@ -12,9 +12,10 @@ class AvatarImage: UIImageView {
 
     override func awakeFromNib() {
         self.layer.cornerRadius = 4
-//        self.layer.borderColor = UIColor.whiteColor().CGColor
-//        self.layer.borderWidth = 0
         self.clipsToBounds = true
+        // self.layer.borderColor = UIColor.whiteColor().CGColor
+        // self.layer.borderWidth = 0
+        
     }
 
 }

@@ -9,21 +9,10 @@
 import UIKit
 
 class HomeTableHeader: UITableViewCell {
-
   
-    @IBOutlet weak var homeHeaderTitle: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    @IBOutlet weak var headerAvatar: UIImageView!
+    @IBOutlet weak var hearderTitle: UILabel!
+    @IBOutlet weak var headerTag: UILabel!
    
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

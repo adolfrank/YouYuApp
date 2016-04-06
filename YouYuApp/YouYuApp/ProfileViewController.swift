@@ -18,51 +18,30 @@ let distance_W_LabelHeader:CGFloat = 43 // 控制标题最终位置的Y值   The
 
 
 class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
+    var textToGo:String = ""
+    var imageToGo: String = ""
+    var avatarToGo: String = ""
+    var plistToGo :String = ""
+    var prototypeCell: ProfileTableCell!
+    var profileTableData: NSArray?
+    
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet var Header: UIView!
     @IBOutlet weak var HeaderLable: UILabel!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var AvatarImage: UIImageView!
     @IBOutlet weak var ProfileTable: UITableView!
-   
-    @IBAction func shareBtnDidTouch(sender: AnyObject) {
-        // MARK: - 初始化 action sheet
-//        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
-//        let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//        })
-//        let saveAction = UIAlertAction(title: "Save", style: .Default, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//        })
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
-//            (alert: UIAlertAction!) -> Void in
-//        })
-//        optionMenu.addAction(deleteAction)
-//        optionMenu.addAction(saveAction)
-//        optionMenu.addAction(cancelAction)
-//        self.presentViewController(optionMenu, animated: true, completion: nil)
-        
-        let activityViewController = UIActivityViewController(
-            activityItems: [HeaderLable.text! as String],
-            applicationActivities: nil)
-        
-        self.presentViewController(activityViewController, animated: true, completion: nil)
-    }
-    
-    
-    var textToGo:String = ""
-    var imageToGo: String = ""
-    var avatarToGo: String = ""
     @IBOutlet weak var AvatarLable: UILabel!
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
+    
+    
     
     // MARK: - 设置自定义导航栏
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        
         // MARK: 设置代理和数据源
         ProfileTable.delegate = self
         ProfileTable.dataSource = self
@@ -72,13 +51,11 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         HeaderLable.text = textToGo
         AvatarImage.image = UIImage(named: avatarToGo)
         headerImageView = UIImageView(frame: Header.bounds)
-        /*
-         tableview前插入UIView的时候，tableview的autolayout貌似有点问题，所以在此方法中直接指定 Header 的宽度等于屏幕宽度
-         */
+        headerImageView.image = UIImage(named: imageToGo)
+        headerImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        // MARK: tableview前插入UIView的时候，tableview的autolayout貌似有点问题，所以在此方法中直接指定 Header 的宽度等于屏幕宽度
         Header.bounds = CGRectMake(0, 0, self.view.frame.height, 200)
         ProfileTable.bounds = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
-        headerImageView?.image = UIImage(named: imageToGo)
-        headerImageView?.contentMode = UIViewContentMode.ScaleAspectFill
         Header.insertSubview(headerImageView, belowSubview: HeaderLable)
         
         // MARK: 设置导航栏的背景图片 － blur效果等
@@ -92,6 +69,13 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         // MARK: 设置导航栏按钮 － 顶置图层
         self.view.bringSubviewToFront(backBtn)
         self.view.bringSubviewToFront(shareBtn)
+        
+        let filepath = NSBundle.mainBundle().pathForResource(plistToGo, ofType: "plist")
+        profileTableData = NSArray(contentsOfFile: filepath!)
+
+        //MARK: 设置tableview的行高:可根据文字高度自动调节高度
+        ProfileTable.estimatedRowHeight = 140
+        ProfileTable.rowHeight = UITableViewAutomaticDimension
         }
 
     
@@ -170,16 +154,37 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return (profileTableData?.count)!
     }
+    
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = ProfileTable.dequeueReusableCellWithIdentifier("profilecell", forIndexPath: indexPath) as! ProfileTableCell
+        cell.profileCellItem.text = profileTableData![indexPath.row]["title"] as? String
+        cell.profileCellItem.numberOfLines = 0
+        cell.profileCellItem.sizeToFit()
         return cell
     }
 
-
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        ProfileTable.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "WebViewSegue" {
+            let toView = segue.destinationViewController as! WebController
+            let indexPath = ProfileTable.indexPathForCell(sender as! UITableViewCell)!
+            toView.titleToGo =  (profileTableData![indexPath.row]["title"] as? String)!
+            toView.urlToGo =  (profileTableData![indexPath.row]["url"] as? String)!
+          }
+    }
    
+    
+    @IBAction func shareBtnDidTouch(sender: AnyObject) {
+        let activityViewController = UIActivityViewController(
+            activityItems: [HeaderLable.text! as String],
+            applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
 }

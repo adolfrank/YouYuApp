@@ -8,17 +8,11 @@
 
 import UIKit
 
-class DiscoverViewController: UIViewController,UIScrollViewDelegate, UITableViewDelegate {
+class DiscoverViewController: UIViewController,UIScrollViewDelegate, UITableViewDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var slider: UIView!
     @IBOutlet weak var discoverScrollView: UIScrollView!
-   
-    @IBAction func titleBtnDidTouch(sender: UIButton) {
-        let btnTag = sender.tag
-        var offset = discoverScrollView.contentOffset
-        offset.x = CGFloat(btnTag) * discoverScrollView.frame.size.width
-        discoverScrollView.setContentOffset(offset, animated: true)
-    }
-
+    @IBOutlet weak var titleView: UIView!
     
     let height:CGFloat = UIScreen.mainScreen().bounds.height
     let width:CGFloat = UIScreen.mainScreen().bounds.width
@@ -28,10 +22,15 @@ class DiscoverViewController: UIViewController,UIScrollViewDelegate, UITableView
         super.viewDidLoad()
         setupVC()
         scrollViewDidEndScrollingAnimation(discoverScrollView)
-        self.automaticallyAdjustsScrollViewInsets = false
-        
+       // self.automaticallyAdjustsScrollViewInsets = false  禁止自动调整scrollview的inset
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     func setupVC() {
         let leftVC:LeftTableController = LeftTableController()
@@ -50,9 +49,36 @@ class DiscoverViewController: UIViewController,UIScrollViewDelegate, UITableView
     
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+               let scale: CGFloat  = discoverScrollView.contentOffset.x / discoverScrollView.frame.size.width
+        let leftBtn =  self.titleView.subviews[0] as! UIButton
+        let centerBtn =  self.titleView.subviews[1] as! UIButton
+        let rghtBtn =  self.titleView.subviews[2] as! UIButton
         
+        let selColor = UIColor.init(red: 0, green: 224/255, blue: 198/255, alpha: 1)
+        let deSelColor = UIColor.darkGrayColor()
         
+        if scale <= 0.6 {
+            leftBtn.setTitleColor(selColor, forState: UIControlState.Normal)
+            centerBtn.setTitleColor(deSelColor, forState: UIControlState.Normal)
+            rghtBtn.setTitleColor(deSelColor, forState: UIControlState.Normal)
+        }
+            else if scale <= 1.6 {
+            leftBtn.setTitleColor(deSelColor, forState: UIControlState.Normal)
+            centerBtn.setTitleColor(selColor, forState: UIControlState.Normal)
+            rghtBtn.setTitleColor(deSelColor, forState: UIControlState.Normal)
+        }
+        else {
+            leftBtn.setTitleColor(deSelColor, forState: UIControlState.Normal)
+            centerBtn.setTitleColor(deSelColor, forState: UIControlState.Normal)
+            rghtBtn.setTitleColor(selColor, forState: UIControlState.Normal)
+        }
+
+        slider.center.x = leftBtn.center.x
+        let x =  centerBtn.center.x - leftBtn.center.x
+        slider.transform = CGAffineTransformMakeTranslation(scale * x , 0)
     }
+    
+    
     
     
     
@@ -79,8 +105,6 @@ class DiscoverViewController: UIViewController,UIScrollViewDelegate, UITableView
         let tmpOffsetX:CGFloat = discoverScrollView.contentOffset.x
         let index:NSInteger = NSInteger (tmpOffsetX / tmpWidth)
         let willShowVC:UIViewController = self.childViewControllers[index]
-        
-       
         willShowVC.setNeedsStatusBarAppearanceUpdate()
         if (willShowVC.isViewLoaded() == true){
             return
@@ -90,7 +114,23 @@ class DiscoverViewController: UIViewController,UIScrollViewDelegate, UITableView
         }
     }
 
+    @IBAction func titleBtnDidTouch(sender: UIButton) {
+        let btnTag = sender.tag
+        var offset = discoverScrollView.contentOffset
+        offset.x = CGFloat(btnTag) * discoverScrollView.frame.size.width
+        discoverScrollView.setContentOffset(offset, animated: true)
+    }
     
-     
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    
+    @IBAction func searchBtnDidTouch(sender: AnyObject) {
+        let toView = SearchViewController(nibName: "SearchViewController", bundle: nil )
+        toView.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(toView, animated: true)
+        
+    }
     
 }

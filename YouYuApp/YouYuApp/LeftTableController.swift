@@ -12,28 +12,22 @@ class LeftTableController: UITableViewController {
  
     let height:CGFloat = UIScreen.mainScreen().bounds.height
     let width:CGFloat = UIScreen.mainScreen().bounds.width
-    
     @IBOutlet var leftTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        leftTableView.contentInset = UIEdgeInsetsMake(24, 0, 0, 0)
-        
+        leftTableView.contentInset = UIEdgeInsetsMake(38, 0, 88, 0)
         let cell = UINib(nibName: "LeftTableCell", bundle: nil)
-        
         self.leftTableView.registerNib(cell, forCellReuseIdentifier: "LeftTableCell")
     }
 
-    override func viewWillAppear(animated: Bool) {
-        
-    }
     
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,12 +52,9 @@ class LeftTableController: UITableViewController {
    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print("scrollViewDidScroll - 发现栏")
-        let vc = ArticalViewController()
-        presentViewController(vc, animated: true, completion: nil)
-        
-        
+        let testVC = TestViewController(nibName:"TestViewController",bundle: nil)
+        testVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(testVC, animated: true)
     }
     
     

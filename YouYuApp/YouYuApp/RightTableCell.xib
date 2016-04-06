@@ -6,24 +6,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightTableCell" rowHeight="106" id="KGk-i7-Jjw" customClass="RightTableCell" customModule="YouYuApp_temp_caseinsensitive_rename" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightTableCell" rowHeight="11" id="KGk-i7-Jjw" customClass="RightTableCell" customModule="YouYuApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="105.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrL-um-09Y">
-                        <rect key="frame" x="137" y="38" width="46" height="30"/>
+                        <rect key="frame" x="25" y="17" width="46" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="tjV-u6-IGH"/>
+                            <constraint firstAttribute="width" constant="46" id="yiU-nc-V2E"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="mrL-um-09Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Obo-Jk-GYB"/>
-                    <constraint firstItem="mrL-um-09Y" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ZsN-7t-een"/>
+                    <constraint firstItem="mrL-um-09Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="RJ3-cz-ryF"/>
+                    <constraint firstItem="mrL-um-09Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="wUJ-FR-WAx"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="280" y="345"/>
+            <point key="canvasLocation" x="304.5" y="324"/>
         </tableViewCell>
     </objects>
 </document>

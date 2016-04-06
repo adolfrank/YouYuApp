@@ -13,21 +13,9 @@ import UIKit
 class HomeTableCell: UITableViewCell {
 
     @IBOutlet weak var titleImage: UIImageView!
-    
-   
     @IBOutlet weak var titleLable: UILabel!
-    
-    
-    
-    
-//    verride func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        // Configure the view for the selected state
-//    }
+    @IBOutlet weak var subTitleLable: UILabel!
+    @IBOutlet weak var tagLable: UILabel!
+    @IBOutlet weak var actionBtn: UIButton!
 
 }

@@ -9,25 +9,6 @@
 import UIKit
 
 
-// MARK: 这里存放数据－数组
-
-var data :[video] = [
-    video(image: "screenshot01", title: "Introduce 3DS Mario", subTitle: "Youtube - 06:32", source: "video01.mp4", avatar: "avatar01"),
-    video(image: "screenshot02", title: "Emoji Among Us", subTitle: "Vimeo - 3:34", source: "video01.mp4", avatar: "avatar02"),
-    video(image: "screenshot03", title: "Seals Documentary", subTitle: "Vine - 00:06", source: "video01.mp4", avatar: "avatar03"),
-    video(image: "screenshot04", title: "Adventure Time", subTitle: "Youtube - 02:39", source: "video01.mp4", avatar: "avatar04"),
-    video(image: "screenshot05", title: "Facebook HQ", subTitle: "Facebook - 10:20", source: "video02.mp4", avatar: "avatar05"),
-    video(image: "screenshot06", title: "Lijiang Lugu Lake", subTitle: "Allen - 20:30", source: "video02.mp4", avatar: "avatar06"),
-    video(image: "screenshot07", title: "Lijiang Lugu Lake", subTitle: "Allen - 20:30", source: "video02.mp4", avatar: "avatar07"),
-    video(image: "screenshot08", title: "Lijiang Lugu Lake", subTitle: "Allen - 20:30", source: "video02.mp4", avatar: "avatar08")
-]
-
-
-var headerData = [
-    (title: "最新主题", avatar: "icon-new"),
-    (title: "热点追踪", avatar: "icon-hot"),
-    (title: "编辑精选", avatar: "icon-choice")
-]
 
 var LeftBannerData = [
     (banner:"LeftTableBanner01" , title:"几年前你看过的“曲面 iPhone”，或许明年就有了", subtitle:"听说 iPhone 4 的经典设计也会回归？"),
@@ -38,3 +19,12 @@ var LeftBannerData = [
     (banner:"LeftTableBanner06" , title:"少了马云的大佬对话，马化腾、李彦宏聊了些什么？", subtitle:"年纪最小的贾跃亭一个箭步，做了一个强势硬广。"),
     (banner:"LeftTableBanner07" , title:"一台自带衣帽间的 SUV，林肯想用它给特斯拉们上一课", subtitle:"没空细说，快上车！")
 ]
+
+
+var MeTableData = [
+    (icon:"MyTheme", meTitle:"我的主题"),
+    (icon:"Mylike", meTitle:"我喜欢的"),
+    (icon:"MyMishu", meTitle:"小秘书")
+]
+
+
